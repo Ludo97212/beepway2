@@ -1,0 +1,28 @@
+<h2>New User</h2>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password, required: true,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, required: true,
+                input_html: { autocomplete: "new-password" } %>
+    <p>Genre :</p>
+    <%= f.collection_radio_buttons :genre, [[0, 'Homme'], [1, 'Femme']], :first, :last %>
+    <%= f.input :nom, required: true, autofocus: true %>
+    <%= f.input :prenom, required: true, autofocus: true %>
+    <%= f.input :date_naissance, as: :date, required: true, html5: true %>
+    <%= f.input :adresse, required: true, autofocus: true %>
+    <%= f.input :code_postal, required: true, autofocus: true %>
+    <%= f.input :ville, required: true, autofocus: true %>
+    <%= f.input :telephone, required: true, autofocus: true %>
+    <%= f.input :url_avatar, required: true, autofocus: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+  </div>
+<% end %>

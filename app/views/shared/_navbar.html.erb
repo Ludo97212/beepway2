@@ -1,0 +1,14 @@
+<div class="navbar">
+      <%= link_to "Home", root_path %>
+      <% if user_signed_in? %>
+        <section>
+          <img src="<%= current_user.url_avatar %>" alt="user_image">
+          <%= current_user.email %>
+          <%= link_to "Modifier profil", edit_user_registration_path %>
+        </section>
+        <%= link_to "deconnexion", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "S'inscrire !", new_user_registration_path %>
+        <%= link_to "connexion", new_user_session_path %>
+      <% end %>
+    </div>

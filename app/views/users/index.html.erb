@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+  <ul>
+    <li>
+      <%= link_to user.nom, edit_user_registration_path(user) %>
+      <%= link_to user.prenom, edit_user_registration_path(user) %>
+      <%#= user.date_naissance.strftime("%d/%m/%Y") %>
+      <%#= Time.now.strftime("%d/%m/%Y") %>
+      <%# @age = user.date_naissance.strftime("%d/%m/%Y").to_date - Time.now.strftime("%d/%m/%Y").to_date %>
+      <%#= @age.to_s %>
+      <%= ((Time.zone.now - user.date_naissance.to_time) / 1.year.seconds).floor %> ans
+    </li>
+  </ul>
+<% end %>
