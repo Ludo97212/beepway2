@@ -1,13 +1,18 @@
-<% @users.each do |user| %>
-  <ul>
-    <li>
-      <%= link_to user.nom, edit_user_registration_path(user) %>
-      <%= link_to user.prenom, edit_user_registration_path(user) %>
-      <%#= user.date_naissance.strftime("%d/%m/%Y") %>
-      <%#= Time.now.strftime("%d/%m/%Y") %>
-      <%# @age = user.date_naissance.strftime("%d/%m/%Y").to_date - Time.now.strftime("%d/%m/%Y").to_date %>
-      <%#= @age.to_s %>
-      <%= ((Time.zone.now - user.date_naissance.to_time) / 1.year.seconds).floor %> ans
-    </li>
-  </ul>
-<% end %>
+<section class="table-users">
+  <h2>Liste Utilisateurs</h2>
+  <table>
+    <tr>
+      <th><h3>Nom</h3></th>
+      <th><h3>Prenom</h3></th>
+      <th><h3>Age</h3></th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.nom, edit_user_registration_path %></td>
+        <td><%= link_to user.prenom, edit_user_registration_path(user) %></td>
+          <%# CALCUL AGE %>
+        <td><%= ((Time.zone.now - user.date_naissance.to_time) / 1.year.seconds).floor %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
