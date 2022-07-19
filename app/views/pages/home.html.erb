@@ -2,6 +2,6 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <%# if current_user.admin %>
 <% if user_signed_in? && current_user.admin %>
-  <%= link_to "Lister les utilisateurs", users_path %>
+  <%= link_to "Lister les utilisateurs", admin_users_path %>
   <%= link_to "Créer un utilisateur", new_user_path %>
 <% end %>
