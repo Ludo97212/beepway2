@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to admin_users_path
       flash.notice = 'Utilisateur créé'
     else
       flash.now.alert = 'Erreur! Essayez à nouveau'
@@ -43,7 +43,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     set_user
     @user.destroy
-    redirect_to root_path
+    redirect_to admin_users_path
   end
 
   private

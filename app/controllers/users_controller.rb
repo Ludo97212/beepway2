@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to new_user_session_path
       flash.notice = 'Compte créé. Connectez-vous dès maintenant'
     else
       flash.now.alert = 'Erreur! Essayez à nouveau'
