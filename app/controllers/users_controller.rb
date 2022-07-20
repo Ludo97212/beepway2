@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to root_path
-      flash.notice = 'Utilisateur créé'
+      flash.notice = 'Compte créé. Connectez-vous dès maintenant'
     else
       flash.now.alert = 'Erreur! Essayez à nouveau'
       render :new
@@ -40,5 +40,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:genre, :nom, :prenom, :email, :password,
+                                  :date_naissance, :adresse, :code_postal, :ville, :telephone,
+                                  :statut, :url_avatar, :date_update)
   end
 end
