@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   def new
-    @user = User.new
+    if current_user != nil
+      redirect_to root_path
+      flash.alert = "Vous n'êtes pas autorisé"
+    else
+      @user = User.new
+    end
   end
 
   def create

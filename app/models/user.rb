@@ -6,12 +6,18 @@ class User < ApplicationRecord
 
   validates_confirmation_of :password
   validates_presence_of :password, on: :create
+  #
+  # ^(?=.*[A-Z])(?=.*[?!@#$&*,;:ù%.§µ£¤])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,20}$
+  # /\A([^\}\{\]\[@\s\,]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates :email, format: { with: /\A([^\}\{\]\[@\s\,]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+    message: "Mauvais format d'adresse email" }
+  #
   validates :nom, :prenom, :email, :date_naissance, :adresse, :code_postal,
             :ville, :telephone, presence: true
   validates :email, uniqueness: true
-  validates :code_postal ,length: { maximum: 20}
-  validates :telephone ,length: { maximum: 20}
-  validates :password ,length: { maximum: 50}
+  validates :code_postal, length: { maximum: 20 }
+  validates :telephone, length: { maximum: 20 }
+  validates :password, length: { minimum: 8, maximum: 50 }
   validates :statut, inclusion: { in: 1..3 }
   validates :genre, inclusion: { in: 0..1 }
 

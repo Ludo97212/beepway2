@@ -3,5 +3,5 @@
 <%# if current_user.admin %>
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "Lister les utilisateurs", admin_users_path %>
-  <%= link_to "Créer un utilisateur", new_user_path %>
+  <%= link_to "Créer un utilisateur", new_admin_user_path %>
 <% end %>
